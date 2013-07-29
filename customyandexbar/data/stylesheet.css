@@ -1,0 +1,12 @@
+#yandex-mail {
+    min-width: 16px;
+}
+#yandex-mail .toolbarbutton-text {
+    display: inline-block !important;
+    font-size: 13px;
+    padding-left: 20px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB/UlEQVR42o2T70sacRzH7z/ojxnRhjKLFT0oGtuTwYjAB0lZRqYjKRSyFuu0ZWVLE5J+qC2n4Vri1SKI2PYgijXYDGIrkPNBUolXTi97d98zlIo4v/CC476v9+dz9/1BdS2s9uq8TEznW4UUeh/zgbo7tJ5IbPorh7kNXpK+4A60XsZwq4BmNgz7l0xJjHxOomM2AtXiWlmhgHp6GZZAqmR6PD/R6l6mCwWap5bQ7z3B8dklpAZxzJ5jtLjCUDmDcrGAcsKPHncc46EEYonsg2EyRxzial17UNr9HrFAo20BWschTlI8rH4WB2z6Xpi8Gw6wokNcgnJsBY2jPhX1yjqPFltUFJPnPOiPR/j1lyuEybN18Qipi/wvEpfQPLIDIbtLvRh0Q0nvFQJnHA+94w++/z4VeeOMgksX14e4hKahHxCyu1S92YXXA9viZIbPIbDJCt14vJ3fFzof4DSVxdIWC/7ySnSIS3hu9qHO7FJRtUYHXpq+IZPNwR35h/ObbiSQy+VDSS6LGeZQdIjbYAqj1jiZX8RnBjvqDRsY/RQVPv/hXUgk/8Me3BfcdVQbnKjunshv41O9DTVdTMlU6eag0NuKB0nWOYxKzUpJKDQhyDrf41H3u+JRrtBY4nJ1AHJ1SJIn7Q487rD03rpM5W20qbxtKC4Aaeh71/kaORu0oivYUA8AAAAASUVORK5CYII=) no-repeat left center;
+}
+#yandex-mail .toolbarbutton-icon { 
+    display: none;
+}
