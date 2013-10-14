@@ -46,42 +46,35 @@ function createButton() {
         menu: makeMenu(),
         onCommand: function() {
             if(!settings.getter('menu_show')) {
-                var elem = panelOpn({
-                    width: '100%',
-                    height: '100%',
-                    contentType: 'iframe',
-                    content: 'http://mail.yandex.ru/neo2/',
-                    left: 0,
-                    top: 0,
-                    onLoad: function() {
-                        var content = this.contentDocument;
-                        
-                        content.getElementsByTagName('noscript')[0].style.display = 'none';
-                        
-                        var close_div = elem.document.createElement('div');
-                        close_div.setAttribute('style','position: fixed; width: 50px; height: 50px; background: red; top:0;right:0;z-index:1000');
-                        
-
-                        elem.panel.appendChild(close_div);
-                        
-                        //.addEventListener('click', function() {
-                        
-                        close_div.addEventListener('click', function() {
-                            elem.hide();
+            
+                // способ открытия
+                if(!settings.getter('opentype')) {
+                    
+                    var elem = panelOpn({
+                        width: '100%',
+                        height: '100%',
+                        contentType: 'iframe',
+                        content: 'http://mail.yandex.ru/neo2/',
+                        left: 0,
+                        top: 0,
+                        onLoad: function() {
+                            var content = this.contentDocument;
+                            /**
+                             * hide first no-script
+                             */ 
+                            var no_script = content.getElementsByTagName('noscript')[0];
                             
-                           tmr.setTimeout(function() {
-                              elem.show();
-                           }, 1000); 
-                        }, true);
-                        
-                        /**
-                         * add close event
-                         */
-                        //content.getElementById('Options_Cancel').addEventListener('click', elem.close, true);     
-                    }
-                });
-                
-                elem.open();
+                            if(no_script != undefined) {
+                                no_script.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    elem.open();
+                }
+                else {
+                    tabs.open('http://mail.yandex.ru/neo2/');
+                }
             }
         }
     });

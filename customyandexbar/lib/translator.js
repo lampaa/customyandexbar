@@ -126,7 +126,8 @@ function createPanel(onLoad, x, y, content, onClose) {
         left: x,
         top: y,
         onLoad: onLoad,
-        onClose: onClose
+        onClose: onClose,
+        buttonClose: false
     });   
 
     panel.panel.style.background = "white";

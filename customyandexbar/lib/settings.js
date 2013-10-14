@@ -18,6 +18,7 @@ function getter(name) {
 setter('corrector', ss.corrector == undefined ? true : ss.corrector);
 setter('translate', ss.translate == undefined ? false : ss.translate);
 setter('mailto', ss.mailto == undefined ? true : ss.mailto);
+setter('opentype', ss.opentype == undefined ? true : ss.opentype);
 setter('yandexid', require('./cookieReader.js').view("http://bar-mail.yandex.ru/barlist", 'yandexuid'));
 setter('menu_show', false);
 

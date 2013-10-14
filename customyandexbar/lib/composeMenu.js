@@ -73,6 +73,16 @@ function refresh(button, Request, data, tabs, settingsApp) {
                     settingsApp.setter('translate', !settingsApp.getter('translate'));
                     settingsApp.storage.translate = settingsApp.getter('translate');
                 }
+    		},{
+            	id: "event-opentype",
+    			label: "Открывать письма в окне?",
+    			type: "checkbox",
+    			checked: settingsApp.storage.opentype == undefined ? false : settingsApp.storage.opentype,
+                onCommand: function() {
+                    settingsApp.setter('menu_show', false);
+                    settingsApp.setter('opentype', !settingsApp.getter('opentype'));
+                    settingsApp.storage.opentype = settingsApp.getter('opentype');
+                }
     		}]
     	};
         /**

@@ -34,14 +34,15 @@ exports.main = function(options) {
     /**
      * create xul element
      */
-    var width = (options.width == undefined)?100:options.width
-    , height = (options.height == undefined)?100:options.height
-    , left = (options.left == undefined)?0:options.left
-    , top = (options.top == undefined)?0:options.top
-    , id = (options.id == undefined)?'mozilla_panel':options.id
-    , contentType = (options.contentType == undefined)?'iframe':options.contentType
-    , onLoad = (options.onLoad == undefined)?false:options.onLoad
-    , onClose = (options.onClose == undefined)?false:options.onClose;
+    var width = options.width || 100
+    , height = options.height || 100
+    , left = options.left || 0
+    , top = options.top || 0
+    , id = options.id || 'mozilla_panel'
+    , contentType = options.contentType || 'iframe'
+    , onLoad = options.onLoad || false
+    , onClose = options.onClose || false
+    , buttonClose = options.buttonClose == undefined ? true : false;
     
     if(~width.toString().indexOf('%')) {
         width = window.gBrowser.clientWidth * parseFloat(width)/100;
@@ -77,11 +78,16 @@ exports.main = function(options) {
         element = options.content;
     }
     
-    var close_div = document.createElement('span');
-    close_div.setAttribute('style','position: fixed !important; height: 0px !important; important;z-index:1000 !important');
-    close_div.innerHTML = "<span style='position: absolute; right:0; display: inline-block; background: red; width: 35px; height: 35px; font-size: 20px;cursor: pointer;text-align: center;color: #fff;'>x</span>";               
-
-    panel.appendChild(close_div);
+    console.log('buttonClose', buttonClose, options.buttonClose);
+    
+    
+    if(buttonClose === true) {
+        var close_div = document.createElement('span');
+        close_div.setAttribute('style','position: fixed !important; height: 0px !important; important;z-index:1000 !important');
+        close_div.innerHTML = "<span style='position: absolute; right:0; display: inline-block; background: red; width: 35px; height: 35px; font-size: 20px;cursor: pointer;text-align: center;color: #fff;'>x</span>";               
+    
+        panel.appendChild(close_div);     
+    }
                         
     
     panel.appendChild(element);
@@ -125,7 +131,7 @@ exports.main = function(options) {
                 this.onClose();
             }
             
-            this.panel.parentNode.removeChild(panel);        
+            this.panel.parentNode.removeChild(panel); 
         },
         setContent: function(content) {
             this.element.setAttribute('src', content);
@@ -148,11 +154,12 @@ exports.main = function(options) {
                 this.removeEventListener('click', _this.openEvent, false);       
             }
             
-            this.closeRedEvent = close_div.addEventListener('click', function() {
-                this.removeEventListener('click', _this.closeRedEvent, false); 
-                _this.close();
-            }, true);
-            
+            if(close_div != undefined) {
+                this.closeRedEvent = close_div.addEventListener('click', function() {
+                    this.removeEventListener('click', _this.closeRedEvent, false); 
+                    _this.close();
+                }, true);                
+            }
             
             this.container.addEventListener('click', this.openEvent, false);
             /**
@@ -168,7 +175,7 @@ exports.main = function(options) {
         show: function() {
             this.panel.openPopup(this.container, 'overlap', this.position[0], this.position[1], false, false);
             this.status = 'show';
-        },
+       },
         styles: function(array) {
             array.forEach(function(val, key) {
                 this.panel.style[key] = val;
