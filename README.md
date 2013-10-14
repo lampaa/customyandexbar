@@ -1,4 +1,4 @@
-## Add-on for Mozilla Firefox ~23.*
+## Add-on for Mozilla Firefox ~25.*
 
 View: https://addons.mozilla.org/ru/firefox/addon/customyandexbar/
 
